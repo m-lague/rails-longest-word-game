@@ -3,7 +3,7 @@ require 'open-uri'
 
 class GridsController < ApplicationController
   def game
-    @grid = generate_grid(rand(3..100))
+    @grid = generate_grid(rand(3..1000))
     @start_time = Time.now.to_i
   end
 
@@ -12,7 +12,10 @@ class GridsController < ApplicationController
   end
 
   def included?(guess, grid)
-    guess.chars.all? { |letter| guess.count(letter) <= grid.count(letter) }
+    guess.chars.all? do |letter|
+      guess.count(letter) <= grid.count(letter)
+    end
+    byebug
   end
 
   def compute_score(attempt, time_taken)
