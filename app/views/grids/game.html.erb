@@ -1,0 +1,13 @@
+<h1>Grids#game</h1>
+<p> <%= @grid  %></p>
+<p><%= @start_time %>
+</p>
+<div>
+  <form action="/score" method="GET">
+    <input type="text" name='attempt'>
+    <input type="hidden" name='start_time' value=<%= @start_time %> >
+    <input type="hidden" name='grid' value=<%= @grid.join %> >
+
+    <input type="submit">
+  </form>
+</div>
